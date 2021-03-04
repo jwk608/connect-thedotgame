@@ -7,6 +7,7 @@
 <li><a href="#game-rules">Game Rules</a></li>
 <li><a href="#how-to-run-the-application">How to run the application</a></li>
   <li><a href="#demo">Demo</a></li>
+  <li><a href="#reference">https://observablehq.com/@bumbeishvili/two-unlimited-lines-intersection-in-javascript</a></li>
 </ul>
 
 <h2 id="introduction">Introduction</h2>
