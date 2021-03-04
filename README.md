@@ -7,6 +7,7 @@
 <li><a href="#game-rules">Game Rules</a></li>
 <li><a href="#how-to-run-the-application">How to run the application</a></li>
   <li><a href="#demo">Demo</a></li>
+  <li><a href="#reference">Reference</a></li>
 </ul>
 
 <h2 id="introduction">Introduction</h2>
@@ -23,3 +24,6 @@
 
 <p> You can clone/download git repo and open index.html</p>
 <h2 id="demo">Demo</h2>
+
+<h2 id="reference">reference </h2>
+<p> <a href="https://observablehq.com/@bumbeishvili/two-unlimited-lines-intersection-in-javascript">https://observablehq.com/@bumbeishvili/two-unlimited-lines-intersection-in-javascript</a><p>
