@@ -11,7 +11,7 @@
 
 <h2 id="introduction">Introduction</h2>
 <p> Two players game created by Sid Sackson. 
-![image](https://user-images.githubusercontent.com/17228348/109898892-f55bb780-7c62-11eb-9e3a-6bdb8889944b.png)
+ <img src="https://user-images.githubusercontent.com/17228348/109898892-f55bb780-7c62-11eb-9e3a-6bdb8889944b.png"></img>
 
 </p>
 
