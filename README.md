@@ -16,5 +16,8 @@
 </p>
 
 <h2 id="game-rules">Game Rules</h2>
+<p> Rules </p>
+<ul><li>The game is played on a 4x4 grid of 16 nodes.</li><li>Players take turns drawing octilinear lines connecting nodes.</li><li>Each line must begin at the start or end of the existing path, so that all lines form a continuous path.</li><li>The first line may begin on any node.</li><li>A line may connect any number of nodes.</li><li>Lines may not intersect.</li><li>No node can be visited twice.</li><li>The game ends when no valid lines can be drawn.</li><li>The player who draws the last line is the loser.</li></ul>
+  
 <h2 id="how-to-run-the-application">How to run the application</h2>
 <h2 id="demo">Demo</h2>
