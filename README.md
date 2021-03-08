@@ -24,6 +24,7 @@
 
 <p> You can clone/download git repo and open index.html</p>
 <h2 id="demo">Demo</h2>
+<a href="https://jwk608.github.io/connect-thedotgame/">Demo</a>
 
 <h2 id="reference">reference </h2>
 <p> <a href="https://observablehq.com/@bumbeishvili/two-unlimited-lines-intersection-in-javascript">https://observablehq.com/@bumbeishvili/two-unlimited-lines-intersection-in-javascript</a><p>
