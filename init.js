@@ -22,6 +22,8 @@ const availableNodes = [
 let initialized = false;
 let headNode = {};
 let tailNode = {};
+let headNodeBlocked = false;
+let tailNodeBlocked = false;
 let NodeVistied = [];
 let startNodePosition = {};
 let isFirstClick = true;
@@ -307,13 +309,14 @@ function updateAvailableNodes(curNode) {
   });
 }
 
-function checkGameOver(curNode) {
+function checkGameOver() {
+  //perform intersect test on tail and head
   if (
     availableNodes === undefined ||
     availableNodes.length == 0 ||
     (checkForValidNodes(tailNode).length == 0 &&
       checkForValidNodes(headNode).length == 0) ||
-    intersectTest(tailNode)
+    (intersectTest(tailNode) && intersectTest(headNode))
   ) {
     return true;
   } else {
@@ -390,78 +393,36 @@ function intersectTest(curNode) {
   let result = false;
   let validNodes = checkForValidNodes(curNode);
 
-  console.log('validnodes');
-  console.log(validNodes);
+  if (validNodes.length === 0) {
+    result = true;
+  } else if (validNodes.length === 1) {
+    if (lines.length > 0) {
+      for (let i = 0; i < validNodes.length; i++) {
+        for (let j = 0; j < lines.length; j++) {
+          let intersection = intersect(
+            validNodes[i].x,
+            validNodes[i].y,
+            curNode.x,
+            curNode.y,
+            lines[j].x1,
+            lines[j].y1,
+            lines[j].x2,
+            lines[j].y2
+          );
 
-  console.log('curNode');
-  console.log(curNode);
+          if (intersection) {
+            if (
+              JSON.stringify(intersection) !== JSON.stringify(firstClickedNode)
+            ) {
+              result = true;
+            }
+          }
+        } // end inner for loop
+      } // end outer for loop
+    }
+  }
 
-  console.log('lines');
-  console.log(lines);
-  console.log('lines length');
-  console.log(lines.length);
-
-  console.log('validNodes.length');
-  console.log(validNodes.length);
-
-  //   if (lines.length > 0) {
-  //     for (let i = 0; i < validNodes.length; i++) {
-  //       console.log('jw inside');
-  //       for (let j = 0; j < lines.length; j++) {
-  //         console.log('hey');
-  //         console.log(
-  //           validNodes[i].x,
-  //           validNodes[i].y,
-  //           curNode.x,
-  //           curNode.y,
-  //           lines[j].x1,
-  //           lines[j].y1,
-  //           lines[j].x2,
-  //           lines[j].y2
-  //         );
-  //         let intersection = intersect(
-  //           validNodes[i].x,
-  //           validNodes[i].y,
-  //           curNode.x,
-  //           curNode.y,
-  //           lines[j].x1,
-  //           lines[j].y1,
-  //           lines[j].x2,
-  //           lines[j].y2
-  //         );
-
-  //         if (intersection) {
-  //           alert('intersection');
-  //           console.log('intersection');
-  //           console.log(intersection);
-  //           if (
-  //             JSON.stringify(intersection) !== JSON.stringify(firstClickedNode)
-  //           ) {
-  //             result = true;
-  //           }
-  //         }
-  //       } // end inner for loop
-  //     } // end outer for loop
-  //   }
-
-  return false;
-
-  //loop thorugh valid Nodes and perfrom intersect test
-  // if there is at least one node that is not intersecting, test is true
-  //   console.log('these are valid nodes');
-  //   console.log(validNodes);
-  //   validNodes.map((node) => {
-  //     intersect(
-  //       curNode.x,
-  //       curNode.y,
-  //       firstClickedNode.x,
-  //       firstClickedNode.y,
-  //       node.x,
-  //       node.y,
-  //       curNode.x,
-  //       curNode.y
-  //     );
-  //   });
+  return result;
 }
 
 function checkForValidNodes(curNode) {
@@ -479,7 +440,6 @@ function checkForValidNodes(curNode) {
       stillAvailableNodes.push(node);
     }
   });
-  console.log(stillAvailableNodes);
   return stillAvailableNodes;
 }
 
@@ -488,7 +448,6 @@ function switchPlayer() {
 }
 
 function handleIncomingMessage(incomingMsg) {
-  console.log(incomingMsg);
   if (incomingMsg.msg === 'NODE_CLICKED') {
     return handleNodeClick(incomingMsg);
   }
