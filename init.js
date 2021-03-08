@@ -293,7 +293,7 @@ function updateAvailableNodes(curNode) {
       }
       if (Math.sign(diffInY) === 1) {
         startY--;
-      } else if (Math.sign(diffInX) === -1) {
+      } else if (Math.sign(diffInY) === -1) {
         startY++;
       }
     }
@@ -312,7 +312,8 @@ function checkGameOver(curNode) {
     availableNodes === undefined ||
     availableNodes.length == 0 ||
     (checkForValidNodes(tailNode).length == 0 &&
-      checkForValidNodes(headNode).length == 0)
+      checkForValidNodes(headNode).length == 0) ||
+    intersectTest(tailNode)
   ) {
     return true;
   } else {
@@ -403,45 +404,45 @@ function intersectTest(curNode) {
   console.log('validNodes.length');
   console.log(validNodes.length);
 
-  if (lines.length > 0) {
-    for (let i = 0; i < validNodes.length; i++) {
-      console.log('jw inside');
-      for (let j = 0; j < lines.length; j++) {
-        console.log('hey');
-        console.log(
-          validNodes[i].x,
-          validNodes[i].y,
-          curNode.x,
-          curNode.y,
-          lines[j].x1,
-          lines[j].y1,
-          lines[j].x2,
-          lines[j].y2
-        );
-        let intersection = intersect(
-          validNodes[i].x,
-          validNodes[i].y,
-          curNode.x,
-          curNode.y,
-          lines[j].x1,
-          lines[j].y1,
-          lines[j].x2,
-          lines[j].y2
-        );
+  //   if (lines.length > 0) {
+  //     for (let i = 0; i < validNodes.length; i++) {
+  //       console.log('jw inside');
+  //       for (let j = 0; j < lines.length; j++) {
+  //         console.log('hey');
+  //         console.log(
+  //           validNodes[i].x,
+  //           validNodes[i].y,
+  //           curNode.x,
+  //           curNode.y,
+  //           lines[j].x1,
+  //           lines[j].y1,
+  //           lines[j].x2,
+  //           lines[j].y2
+  //         );
+  //         let intersection = intersect(
+  //           validNodes[i].x,
+  //           validNodes[i].y,
+  //           curNode.x,
+  //           curNode.y,
+  //           lines[j].x1,
+  //           lines[j].y1,
+  //           lines[j].x2,
+  //           lines[j].y2
+  //         );
 
-        if (intersection) {
-          alert('intersection');
-          console.log('intersection');
-          console.log(intersection);
-          if (
-            JSON.stringify(intersection) !== JSON.stringify(firstClickedNode)
-          ) {
-            result = true;
-          }
-        }
-      } // end inner for loop
-    } // end outer for loop
-  }
+  //         if (intersection) {
+  //           alert('intersection');
+  //           console.log('intersection');
+  //           console.log(intersection);
+  //           if (
+  //             JSON.stringify(intersection) !== JSON.stringify(firstClickedNode)
+  //           ) {
+  //             result = true;
+  //           }
+  //         }
+  //       } // end inner for loop
+  //     } // end outer for loop
+  //   }
 
   return false;
 
